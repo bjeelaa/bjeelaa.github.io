@@ -17,14 +17,3 @@ with open("blank.html") as file:
             div.append(soup.new_tag('br'))
     with open("index.html", "w") as file:
         file.write(str(soup))
-
-repo = Repo('./')
-files = ['./index.html']
-for file in os.listdir('./pdf/'):
-    if os.path.isfile(os.path.join('./pdf/', file)):
-        files.append('./pdf/'+file)
-repo.index.add(files)
-repo.index.commit('new pdf files')
-
-origin = repo.remotes[0]
-origin.push()
