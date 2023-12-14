@@ -9,6 +9,7 @@ with open("blank.html") as file:
         if os.path.isfile(os.path.join('./pdf/', file)):
             aTag = soup.new_tag('a')
             aTag['href'] = "./pdf/" + file
+            aTag['target'] = '_blank'
             aTag.insert(0, NavigableString(file))
             div.append(aTag)
             div.append(soup.new_tag('br'))
