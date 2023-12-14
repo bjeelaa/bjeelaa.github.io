@@ -22,7 +22,7 @@ repo = Repo('./')
 files = ['./index.html']
 for file in os.listdir('./pdf/'):
     if os.path.isfile(os.path.join('./pdf/', file)):
-        files.append('./pdf'+file)
+        files.append('./pdf/'+file)
 repo.index.add(files)
 repo.index.commit('new pdf files')
 
