@@ -1,5 +1,7 @@
 from bs4 import BeautifulSoup as Soup
 from bs4 import NavigableString
+from git.repo import Repo
+
 import os
 with open("blank.html") as file:
     htmlFile = file.read()
@@ -15,3 +17,14 @@ with open("blank.html") as file:
             div.append(soup.new_tag('br'))
     with open("index.html", "w") as file:
         file.write(str(soup))
+
+repo = Repo('./')
+files = ['./index.html']
+for file in os.listdir('./pdf/'):
+    if os.path.isfile(os.path.join('./pdf/', file)):
+        files.append(file)
+repo.index.add(files)
+repo.index.commit('new pdf files')
+
+origin = repo.remotes[0]
+origin.push()
