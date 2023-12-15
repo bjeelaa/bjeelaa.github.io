@@ -14,10 +14,6 @@ with open("blank.html") as file:
             aTag['target'] = '_blank'
             aTag.insert(0, NavigableString(file))
             div.append(aTag)
-            copyBtn = soup.new_tag('button')
-            copyBtn['onclick'] = 'copyText("'+file+'")'
-            copyBtn.insert(0, NavigableString("Copy path to clipboard"))
-            div.append(copyBtn)
             div.append(soup.new_tag('br'))
     with open("index.html", "w") as file:
         file.write(str(soup.prettify()))
