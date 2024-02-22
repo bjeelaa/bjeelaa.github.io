@@ -8,14 +8,14 @@ with open("blank.html") as file:
     soup = Soup(htmlFile, 'html.parser')
     for file in os.listdir('./pdf/'):
         if os.path.isfile(os.path.join('./pdf/', file)):
-            if file[:6] == "bzh - ":
-                div = soup.find(id='list2')
-                file = file[6:]
-            else: div = soup.find(id='list')
             aTag = soup.new_tag('a')
             aTag['href'] = "./pdf/" + file
             aTag['target'] = '_blank'
             aTag.insert(0, NavigableString(file))
+            if file[:6] == "bzh - ":
+                div = soup.find(id='list2')
+                file = file[6:]
+            else: div = soup.find(id='list')
             div.append(aTag)
             div.append(soup.new_tag('br'))
     with open("index.html", "w") as file:
