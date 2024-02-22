@@ -10,6 +10,7 @@ with open("blank.html") as file:
         if os.path.isfile(os.path.join('./pdf/', file)):
             if file[:6] == "bzh - ":
                 div = soup.find(id='list2')
+                file = file[6:]
             else: div = soup.find(id='list')
             aTag = soup.new_tag('a')
             aTag['href'] = "./pdf/" + file
