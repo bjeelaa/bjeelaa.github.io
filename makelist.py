@@ -1,6 +1,5 @@
 from bs4 import BeautifulSoup as Soup
 from bs4 import NavigableString
-from git.repo import Repo
 
 import os
 with open("blank.html") as file:
