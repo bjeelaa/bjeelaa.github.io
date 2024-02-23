@@ -1,5 +1,6 @@
 from flask import Flask, request, render_template
 import os
+import subprocess
 
 app = Flask(__name__)
 
@@ -19,6 +20,17 @@ def check_password(password):
 @app.route('/')
 def index():
     return render_template('index.html')
+
+@app.route('/commit', methods=['POST'])
+def commit_files():
+    if 'password' not in request.form:
+        return 'Invalid request'
+    if not check_password(request.form['password']):
+        return render_template('index.html', message='Invalid password')
+    
+    subprocess.call('./makelistandcommit.sh', shell=True)
+    
+    return render_template('index.html', message="Succesfully committed")
 
 @app.route('/upload', methods=['POST'])
 def upload_file():

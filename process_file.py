@@ -13,7 +13,7 @@ def process_pdf(file_path, destination_folder):
         return error_message
 
     shutil.copy(file_path, destination_path)
-    success_message = f'File saved to {destination_path} and changes committed to repo'
+    success_message = f'File saved to {destination_path}'
     os.remove(file_path)
     
     return success_message
